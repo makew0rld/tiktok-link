@@ -1,0 +1,14 @@
+[Unit]
+Description=tiktok-link
+After=network.target
+
+[Service]
+User=makeworld
+Group=makeworld
+WorkingDirectory=/home/makeworld/scripts/tiktok-link
+ExecStart=/home/makeworld/.poetry/bin/poetry run python3 main.py 2>/dev/null
+Environment=PYTHONUNBUFFERED=1
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

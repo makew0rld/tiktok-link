@@ -6,8 +6,6 @@ It uses [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download the video, and [E
 
 Dependencies are managed with [Poetry](https://python-poetry.org/), because it's the best. External dependencies are yt-dlp and ffmpeg.
 
-The bot is run with the `./run` script.
-
 ## License
 
 tiktok-link is licensed under the AGPL v3.0. This means that if you fork the bot and run it on Reddit, you have to publish your source code! See [LICENSE](./LICENSE) for details.
