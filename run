@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# stderr is redirected to /dev/null because of OCR warnings that can't be disable, that would show up in a log otherwise
+poetry run python3 main.py 2>/dev/null

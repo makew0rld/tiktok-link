@@ -1,0 +1,8 @@
+# Example praw.ini for deployment
+
+[bot]
+client_id=blahblah
+client_secret=blahblahblah
+username=my_bot
+password=my_password
+user_agent=<platform>:<app ID>:<version string> (by /u/<reddit username>)
