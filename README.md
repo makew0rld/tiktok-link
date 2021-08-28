@@ -4,7 +4,9 @@ u/tiktok-link is Reddit bot that analyzes TikTok videos with OCR, and replies to
 
 It uses [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download the video, and [EasyOCR](https://github.com/JaidedAI/EasyOCR) to get the text. It will try to look at the end of the video for the name first, and if it can't find a user that exists, it will look at the beginning of the video for the name that's below the floating logo.
 
-Dependencies are managed with [Poetry](https://python-poetry.org/), because it's the best.
+Dependencies are managed with [Poetry](https://python-poetry.org/), because it's the best. External dependencies are yt-dlp and ffmpeg.
+
+The bot is run with the `./run` script.
 
 ## License
 

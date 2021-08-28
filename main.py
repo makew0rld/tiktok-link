@@ -225,7 +225,6 @@ def get_username_from_video(url):
 
     download_video(url)
     img = preprocess_last_frame(last_frame())
-    img.show()
     text = clean_text(ocr(img))
 
     if text is None or not tiktok_user_exists(text):
@@ -233,7 +232,6 @@ def get_username_from_video(url):
         # Try to find it with the floating logo in the first frame instead
         # This is much more error-prone
         img = preprocess_first_frame(first_frame())
-        img.show()
         text = clean_text(ocr(img))
 
         if tiktok_user_exists(text):
@@ -258,8 +256,6 @@ def main():
     subreddit = reddit.subreddit("TikTokCringe")
 
     for submission in subreddit.stream.submissions(skip_existing=True):
-
-        print("https://old.reddit.com" + submission.permalink)
 
         if not submission.url.startswith("https://v.redd.it/"):
             # Ignore any spam links like YouTube that could cause a massive download
@@ -308,7 +304,6 @@ def main():
             # username is None
             continue
 
-        print(tmpl)
         submission.reply(tmpl)
 
 
