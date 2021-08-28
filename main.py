@@ -15,6 +15,7 @@ The user who posted this TikTok is...
 \u00a0
 
 ^^beep ^^boop ^^I'm ^^a ^^bot. ^^Contact ^^makeworld ^^if ^^needed.
+[^^Source ^^code](https://github.com/makeworld-the-better-one/tiktok-link)
 """.strip()
 
 UNSURE_COMMENT_TEMPLATE = """
@@ -28,6 +29,7 @@ and had to try and find the floating name instead.
 \u00a0
 
 ^^beep ^^boop ^^I'm ^^a ^^bot. ^^Contact ^^makeworld ^^if ^^needed.
+[^^Source ^^code](https://github.com/makeworld-the-better-one/tiktok-link)
 """.strip()
 
 TITLE_COMMENT_TEMPLATE = """
@@ -38,7 +40,7 @@ I detected one or more usernames in the title of this post! Here they are:
 \u00a0
 
 ^^beep ^^boop ^^I'm ^^a ^^bot. ^^Contact ^^makeworld ^^if ^^needed.
-
+[^^Source ^^code](https://github.com/makeworld-the-better-one/tiktok-link)
 """.strip()
 
 TITLE_AND_VIDEO_COMMENT_TEMPLATE = """
@@ -53,15 +55,8 @@ Just in case, I also detected which user posted this TikTok using the video only
 \u00a0
 
 ^^beep ^^boop ^^I'm ^^a ^^bot. ^^Contact ^^makeworld ^^if ^^needed.
+[^^Source ^^code](https://github.com/makeworld-the-better-one/tiktok-link)
 """.strip()
-
-
-def np_multi_and(*args):
-    result = args[0]
-    for arr in args[1:]:
-        # Chain all the ANDs
-        result = np.logical_and(result, arr)
-    return result
 
 
 def download_video(url):
