@@ -6,7 +6,8 @@ After=network.target
 User=makeworld
 Group=makeworld
 WorkingDirectory=/home/makeworld/scripts/tiktok-link
-ExecStart=/home/makeworld/.poetry/bin/poetry run python3 main.py 2>/dev/null
+ExecStart=/home/makeworld/.poetry/bin/poetry run python3 main.py
+StandardError=null
 Environment=PYTHONUNBUFFERED=1
 Restart=always
 

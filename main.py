@@ -153,6 +153,15 @@ def preprocess_first_frame(img):
 
 
 def preprocess_last_frame(img):
+    # Remove top and bottom quarter
+    # This prevents the OCR from reading the floating logo username at the bottom
+    # on videos that don't end with the name animation.
+    # That happening is a problem cause the bot will say that it's sure,
+    # because it's from the last frame, but it's not sure. Only reading from the
+    # name animation is a sure thing.
+
+    img = img.crop((0, int(img.height / 4), img.width, int(img.height / 4) * 3))
+
     return img
 
     # # HSV filter to only get the white text
