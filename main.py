@@ -5,6 +5,7 @@ from PIL import Image
 import easyocr
 import numpy as np
 import requests
+import sys
 
 
 SURE_COMMENT_TEMPLATE = """
@@ -177,6 +178,11 @@ def clean_text(texts):
         if text.startswith("TikTok @"):
             # Model will do this when reading the first frame text
             return text[len("TikTok ") :].lower().replace(" ", "_")
+        if text.startswith("J TikTok @"):
+            # Model did this before, see https://github.com/makeworld-the-better-one/tiktok-link/issues/1#issuecomment-907712577
+            # The TikTok logo is always recognized as J, so the difference
+            # this time is just that it included it in the paragraph
+            return text[len("J TikTok ") :].lower().replace(" ", "_")
 
 
 # Load model into memory
@@ -212,7 +218,7 @@ def tiktok_user_exists(username):
     raise Exception(f"Unexpected TikTok status code {r.status_code}")
 
 
-def get_username_from_video(url):
+def get_username_from_video(url, debug=False):
     """
     Downloads the TikTok video and returns the text of the username, including the "@".
 
@@ -225,14 +231,26 @@ def get_username_from_video(url):
 
     download_video(url)
     img = preprocess_last_frame(last_frame())
-    text = clean_text(ocr(img))
+    if debug:
+        img.show()
+    text = ocr(img)
+    if debug:
+        print("Last frame")
+        print(text)
+    text = clean_text(text)
 
     if text is None or not tiktok_user_exists(text):
         # Username couldn't be found or didn't exist - maybe misread or cutoff
         # Try to find it with the floating logo in the first frame instead
         # This is much more error-prone
         img = preprocess_first_frame(first_frame())
-        text = clean_text(ocr(img))
+        if debug:
+            img.show()
+        text = ocr(img)
+        if debug:
+            print("First frame")
+            print(text)
+        text = clean_text(text)
 
         if tiktok_user_exists(text):
             return text, False
@@ -308,4 +326,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if sys.argv[-1].startswith("https://"):
+        # Link was passed, for testing/debugging
+        print(get_username_from_video(sys.argv[-1], debug=True))
+    else:
+        main()
