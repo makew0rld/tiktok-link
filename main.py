@@ -6,6 +6,7 @@ import easyocr
 import numpy as np
 import requests
 import sys
+import traceback
 
 
 SURE_COMMENT_TEMPLATE = """
@@ -312,7 +313,8 @@ def main():
             username, sure = get_username_from_video(submission.url)
         except Exception as e:
             # Log to stdout
-            print(e)
+            print(submission.permalink)
+            traceback.print_exc(file=sys.stdout)
             continue
 
         if len(title_usernames) > 0 and username is not None:
