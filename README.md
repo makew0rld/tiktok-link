@@ -1,6 +1,6 @@
 # tiktok-link
 
-[u/tiktok-link](https://reddit.com/user/tiktok-link) is Reddit bot that analyzes TikTok videos with OCR, and replies to the posts with a link to the creator's page. It is live on [r/TikTokCringe](https://reddit.com/r/TikTokCringe).
+[u/tiktok-link](https://reddit.com/user/tiktok-link) is Reddit bot that analyzes TikTok videos with OCR, and replies to the posts with a link to the creator's page. It was briefly live on [r/TikTokCringe](https://reddit.com/r/TikTokCringe), but doesn't run on any subreddit at the moment.
 
 It uses [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download the video, and [EasyOCR](https://github.com/JaidedAI/EasyOCR) to get the text. It will try to look at the end of the video for the name first, and if it can't find a user that exists, it will look at the beginning of the video for the name that's below the floating logo.
 
